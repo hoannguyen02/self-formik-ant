@@ -22,10 +22,13 @@ export default function Posts() {
     <span>{error}</span>
   ) : (
     <>
+      <Link to={`/post/add`}>Add new post</Link>
       <ul>
         {posts.map((post) => (
           <li key={`post-${post.id}`}>
-            <Link to={`/post/${post.id}`}>{post.title}</Link>
+            {post.title}
+            <Link to={`/post/${post.id}`}>Details</Link>
+            <Link to={`/post/${post.id}/update`}>Update</Link>
           </li>
         ))}
       </ul>
