@@ -7,10 +7,11 @@ import { useHistory } from "react-router-dom";
 export default function AddPost() {
   const history = useHistory();
   const [createPost, { isLoading, isError, error, data }] = useMutation(
-    (values) =>
-      axios
+    (values) => {
+      return axios
         .post(`https://jsonplaceholder.typicode.com/posts`, values)
-        .then((res) => res.data),
+        .then((res) => res.data);
+    },
     {
       onSuccess: (data, values) => {
         queryCache.invalidateQueries("posts");

@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
+import { AntInput } from "./FormField";
 
 let schema = yup.object().shape({
   title: yup.string().required("This is required field"),
@@ -14,9 +15,9 @@ const PostForm = ({ initialValues, onSubmit }) => (
       onSubmit(values);
     }}
   >
-    {({ isSubmitting }) => (
+    {({ isSubmitting, values }) => (
       <Form>
-        <Field type='input' name='title' />
+        <Field component={AntInput} name='title' />
         <ErrorMessage name='title' component='div' />
         <button type='submit' disabled={isSubmitting}>
           Submit
